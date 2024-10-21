@@ -1162,11 +1162,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3570747170137345922, guid: 8c91f30f913ac704f97082caa3e89dea, type: 3}
   m_PrefabInstance: {fileID: 715224613070107734}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &418048441 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 907867126245017648, guid: 8c91f30f913ac704f97082caa3e89dea, type: 3}
-  m_PrefabInstance: {fileID: 715224613070107734}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &442290626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2259,7 +2254,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.54088044, g: 0.4677425, b: 0.4677425, a: 1}
+  m_Color: {r: 0.31446534, g: 0.26007667, b: 0.26007667, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5214,7 +5209,7 @@ PrefabInstance:
     - target: {fileID: 7201994810015492191, guid: 8c91f30f913ac704f97082caa3e89dea, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 418048441}
+      objectReference: {fileID: 0}
     - target: {fileID: 7517742050203718583, guid: 8c91f30f913ac704f97082caa3e89dea, type: 3}
       propertyPath: m_Name
       value: BrickRed (2)

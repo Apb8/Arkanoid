@@ -10,16 +10,16 @@ public class Brick : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pelotilla"))
         {
-            animator.Play("RedBrick");
-            StartCoroutine(DestroyBrick());
-            //Destroy(gameObject);
+            //animator.Play("RedBrick");
+            //StartCoroutine(DestroyBrick());
+            Destroy(gameObject);
         }
     }
 
     //si no aconsegueixo q funcioni lo de la animacio aixo ho trec
-    private IEnumerator DestroyBrick()
-    {
-        yield return new WaitForSeconds(destroyDelay);
-        Destroy(gameObject);
-    }
+    //private IEnumerator DestroyBrick()
+    //{
+    //    yield return new WaitForSeconds(destroyDelay);
+    //    Destroy(gameObject);
+    //}
 }

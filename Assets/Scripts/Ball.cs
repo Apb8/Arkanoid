@@ -16,9 +16,11 @@ public class Ball : MonoBehaviour
         rb.AddForce(velocity*speed);
     }
 
-    
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("DeadZone"))
+        {
+            FindAnyObjectByType<GameManager>().LoseHealth();
+        }
     }
 }

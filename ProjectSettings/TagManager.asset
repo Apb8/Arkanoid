@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pelotilla
+  - DeadZone
   layers:
   - Default
   - TransparentFX

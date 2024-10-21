@@ -8,12 +8,13 @@ public class Player : MonoBehaviour
     private float inputValue;
     public float moveSpeed = 2.5f;
     private Vector2 direction;
+    Vector2 startPosition;
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -35,5 +36,11 @@ public class Player : MonoBehaviour
         }
 
         rb.AddForce(direction * moveSpeed * Time.deltaTime * 100);
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = startPosition;
+        rb.velocity = Vector2.zero;
     }
 }

@@ -7,20 +7,29 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 300.0f;
     private Vector2 velocity;
+    Vector2 startPosition;
 
     void Start()
     {
-        velocity.x = Random.Range(-1f, 1f);
-        velocity.y = 1;
-
-        rb.AddForce(velocity*speed);
+        startPosition = transform.position;
+        ResetBall();
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("DeadZone"))
         {
-            FindAnyObjectByType<GameManager>().LoseHealth();
+            FindObjectOfType<GameManager>().LoseHealth();
         }
+    }
+
+    public void ResetBall()
+    {
+        transform.position = startPosition;
+        rb.velocity = Vector2.zero;
+
+        velocity.x = Random.Range(-1f, 1f);
+        velocity.y = 1;
+
+        rb.AddForce(velocity * speed);
     }
 }

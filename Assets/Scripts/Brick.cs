@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    public Animator animator;
-    public float destroyDelay = 0.5f;
+    //public Animator animator;
+    //public float destroyDelay = 0.5f;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Pelotilla"))
         {
             //animator.Play("RedBrick");
             //StartCoroutine(DestroyBrick());
+            FindObjectOfType<GameManager>().CheckLevelCompleted();
             Destroy(gameObject);
         }
     }

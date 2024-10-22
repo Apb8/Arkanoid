@@ -5085,7 +5085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394961919932765976, guid: afec4957183669f4b9abda9fa1440487, type: 3}
       propertyPath: m_LinearDrag
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2611946280491622302, guid: afec4957183669f4b9abda9fa1440487, type: 3}
       propertyPath: m_Name
@@ -5093,7 +5093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8696124964644882766, guid: afec4957183669f4b9abda9fa1440487, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

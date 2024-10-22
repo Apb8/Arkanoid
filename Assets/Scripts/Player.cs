@@ -27,17 +27,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Vector3 mousePosition = Input.mousePosition;
+
+        //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        //////E teoria no hace falta ya q lo hago desde el inspector constraints freeze, mirarse be aquestes 2 linies
+        ////// Restringir el movimiento solo al eje X, y mantener la Y constante
+        //Vector2 targetPosition = new Vector2(Mathf.Clamp(worldPosition.x, minX, maxX), transform.position.y);
+        //// Mover la barra suavemente hacia la posición del mouse
+        //Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+        //rb.velocity = direction * moveSpeed;
+
+        // Obtener la posición del mouse
         Vector3 mousePosition = Input.mousePosition;
 
+        // Convertir la posición del mouse en coordenadas del mundo
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        ////E teoria no hace falta ya q lo hago desde el inspector constraints freeze, mirarse be aquestes 2 linies
-        //// Restringir el movimiento solo al eje X, y mantener la Y constante
-        Vector2 targetPosition = new Vector2(Mathf.Clamp(worldPosition.x, minX, maxX), transform.position.y);
-        // Mover la barra suavemente hacia la posición del mouse
-        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+        // Restringir el movimiento solo al eje X
+        float targetX = Mathf.Clamp(worldPosition.x, minX, maxX);
 
-        rb.velocity = direction * moveSpeed;
+        // Mover la barra a la posición objetivo
+        rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
 
         ////Para hacerlo con teclado A-D
         //inputValue = Input.GetAxisRaw("Horizontal");

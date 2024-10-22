@@ -1407,7 +1407,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.31446534, g: 0.26007667, b: 0.26007667, a: 1}
+  m_Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5085,7 +5085,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394961919932765976, guid: afec4957183669f4b9abda9fa1440487, type: 3}
       propertyPath: m_LinearDrag
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394961919932765976, guid: afec4957183669f4b9abda9fa1440487, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2611946280491622302, guid: afec4957183669f4b9abda9fa1440487, type: 3}
       propertyPath: m_Name

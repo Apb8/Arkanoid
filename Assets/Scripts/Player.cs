@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public float minX;
     public float maxX;
 
+    public bool isAutoMode = false;
+    public GameObject ball;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -39,17 +42,20 @@ public class Player : MonoBehaviour
 
         //rb.velocity = direction * moveSpeed;
 
-        // Obtener la posición del mouse
-        Vector3 mousePosition = Input.mousePosition;
+        //Modo automatico
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            isAutoMode = !isAutoMode;
+        }
 
-        // Convertir la posición del mouse en coordenadas del mundo
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        // Restringir el movimiento solo al eje X
-        float targetX = Mathf.Clamp(worldPosition.x, minX, maxX);
-
-        // Mover la barra a la posición objetivo
-        rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
+        //// Obtener la posición del mouse -- esto lo he puesto en manual move
+        //Vector3 mousePosition = Input.mousePosition;
+        //// Convertir la posición del mouse en coordenadas del mundo
+        //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        //// Restringir el movimiento solo al eje X
+        //float targetX = Mathf.Clamp(worldPosition.x, minX, maxX);
+        //// Mover la barra a la posición objetivo
+        //rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
 
         ////Para hacerlo con teclado A-D
         //inputValue = Input.GetAxisRaw("Horizontal");
@@ -70,6 +76,35 @@ public class Player : MonoBehaviour
         //rb.AddForce(direction * moveSpeed * Time.deltaTime * 100);
     }
 
+    //uso fixed update porq el player se mueve con fisicas y no con transform
+    private void FixedUpdate()
+    {
+        if(isAutoMode)
+        {
+            AutoMove();
+        }
+        else
+        {
+            ManualMove();
+        }
+    }
+
+    void AutoMove()
+    {
+        // Obtener la posición X de la bola
+        float targetX = Mathf.Clamp(ball.transform.position.x, minX, maxX);
+
+        // Mover la barra hacia la posición de la bola en el eje X
+        rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
+    }
+
+    void ManualMove()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        float targetX = Mathf.Clamp(worldPosition.x, minX, maxX);
+        rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
+    }
     public void ResetPlayer()
     {
         transform.position = startPosition;

@@ -2031,6 +2031,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5140294787374168800, guid: 5b63f6fd6a83106469bfc726df4c0279, type: 3}
   m_PrefabInstance: {fileID: 924947402}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &930214419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1101114332861252601, guid: 79bc6ae3693fe1049b5e80bb26021128, type: 3}
+  m_PrefabInstance: {fileID: 5451638513245852798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &955670462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5095,6 +5100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8696124964644882766, guid: afec4957183669f4b9abda9fa1440487, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 930214419}
     - target: {fileID: 8696124964644882766, guid: afec4957183669f4b9abda9fa1440487, type: 3}
       propertyPath: moveSpeed
       value: 15

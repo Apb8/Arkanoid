@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pelotilla
   - DeadZone
+  - Wall
   layers:
   - Default
   - TransparentFX

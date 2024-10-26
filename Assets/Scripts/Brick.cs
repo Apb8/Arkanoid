@@ -19,7 +19,7 @@ public class Brick : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pelotilla"))
         {
-            resistance--; //mirar com fer be lo de resistant
+            resistance--; //mirar si es pot fer millor
 
             if (resistance <= 0)
             {

@@ -21,30 +21,14 @@ public class Ball : MonoBehaviour
         ResetBall();
     }
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //rb.velocity *= speedIncrement;
-
-        //if (rb.velocity.magnitude > maxSpeed)
-        //{
-        //    rb.velocity = rb.velocity.normalized * maxSpeed;
-        //}
-
-
-        ////evitar que la ball se quede atascada en un mismo mov vertical
-        //if (Mathf.Abs(rb.velocity.x) < 0.5f)
-        //{
-        //    float directionX = rb.velocity.x > 0 ? 0.5f : -0.5f;
-        //    rb.velocity = new Vector2(directionX, rb.velocity.y).normalized * rb.velocity.magnitude;
-        //}
-
-        // Solo incrementa la velocidad si está por debajo del límite
+    {               
         if (rb.velocity.magnitude < maxSpeed)
         {
             rb.velocity *= speedIncrement;
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
-        // Evitar que la bola se quede atascada en movimiento vertical recto
+        // Avoid stuck
         if (Mathf.Abs(rb.velocity.x) < minYVelocity)
         {
             float directionX = rb.velocity.x > 0 ? minYVelocity : -minYVelocity;

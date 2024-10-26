@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Generando power up");
         Vector3 spawnPosition = new Vector3(
-            Random.Range(-1f, 1f), // mirar dajustar segons tamany nivell
+            Random.Range(-1f, 1f), // mirar dajustar
             Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y + 1f,
             0
         );

@@ -16,15 +16,26 @@ public class Player : MonoBehaviour
     public bool isAutoMode = false;
     public GameObject ball;
 
+    [SerializeField] private GameObject extendedPlayerPrefab;
+    private GameObject currentPlayer; 
+    private bool isExtended = false;
+    public float extensionDuration = 5f;
+    private float extensionTimer;
+
     // Start is called before the first frame update
     private void Start()
     {
+        //rb = GetComponent<Rigidbody2D>();
+
         startPosition = transform.position;
+
+        //currentPlayer = this.gameObject;
 
         // Calculo aqui los limites pero tamb puedo hacerlo manualmente en el inspector
         float halfPlayerWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
         minX = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + halfPlayerWidth;
         maxX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - halfPlayerWidth;
+                
     }
 
     // Update is called once per frame
@@ -48,33 +59,42 @@ public class Player : MonoBehaviour
             isAutoMode = !isAutoMode;
         }
 
-        //// Obtener la posición del mouse -- esto lo he puesto en manual move
-        //Vector3 mousePosition = Input.mousePosition;
-        //// Convertir la posición del mouse en coordenadas del mundo
-        //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        //// Restringir el movimiento solo al eje X
-        //float targetX = Mathf.Clamp(worldPosition.x, minX, maxX);
-        //// Mover la barra a la posición objetivo
-        //rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
-
-        ////Para hacerlo con teclado A-D
-        //inputValue = Input.GetAxisRaw("Horizontal");
-
-        //if(inputValue == 1)
+        //if (isExtended)
         //{
-        //    direction = Vector2.right;
+        //    extensionTimer -= Time.deltaTime;
+        //    if (extensionTimer <= 0)
+        //    {
+        //        ResetSize();
+        //    }
         //}
-        //else if(inputValue == -1)
-        //{
-        //    direction = Vector2.left;
-        //}
-        //else
-        //{
-        //    direction = Vector2.zero;
-        //}
+            //// Obtener la posición del mouse -- esto lo he puesto en manual move
+            //Vector3 mousePosition = Input.mousePosition;
+            //// Convertir la posición del mouse en coordenadas del mundo
+            //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            //// Restringir el movimiento solo al eje X
+            //float targetX = Mathf.Clamp(worldPosition.x, minX, maxX);
+            //// Mover la barra a la posición objetivo
+            //rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
 
-        //rb.AddForce(direction * moveSpeed * Time.deltaTime * 100);
-    }
+            ////Para hacerlo con teclado A-D
+            //inputValue = Input.GetAxisRaw("Horizontal");
+
+            //if(inputValue == 1)
+            //{
+            //    direction = Vector2.right;
+            //}
+            //else if(inputValue == -1)
+            //{
+            //    direction = Vector2.left;
+            //}
+            //else
+            //{
+            //    direction = Vector2.zero;
+            //}
+
+            //rb.AddForce(direction * moveSpeed * Time.deltaTime * 100);
+        
+    } 
 
     //uso fixed update porq el player se mueve con fisicas y no con transform
     private void FixedUpdate()
@@ -105,9 +125,73 @@ public class Player : MonoBehaviour
         float targetX = Mathf.Clamp(worldPosition.x, minX, maxX);
         rb.velocity = new Vector2((targetX - transform.position.x) * moveSpeed, rb.velocity.y);
     }
+
     public void ResetPlayer()
     {
         transform.position = startPosition;
         rb.velocity = Vector2.zero;
+
+        //if (currentPlayer != null)
+        //{
+        //    Destroy(currentPlayer); // Destruye el jugador actual si existe
+        //}
+
+        //// Reinstancia el jugador original sin el power-up
+        //currentPlayer = Instantiate(this.gameObject, startPosition, Quaternion.identity);
+        //currentPlayer.transform.parent = transform.parent;
+
+        //rb = currentPlayer.GetComponent<Rigidbody2D>(); // Actualiza la referencia de Rigidbody2D
+        //isExtended = false; // Asegúrate de que isExtended esté en falso
+        //extensionTimer = 0f; // Reiniciar el temporizador de extensión
+    }
+
+    public void ExtendSize()
+    {
+        //if (!isExtended)
+        //{
+        //    Destroy(currentPlayer); // Destruir la barra actual
+
+        //    // Instanciar la barra extendida
+        //    currentPlayer = Instantiate(extendedPlayerPrefab, transform.position, Quaternion.identity);
+        //    currentPlayer.transform.parent = transform.parent;
+
+        //    // Obtener el script Player del nuevo objeto
+        //    var extendedPlayerScript = currentPlayer.GetComponent<Player>();
+        //    if (extendedPlayerScript != null)
+        //    {
+        //        extendedPlayerScript.ball = this.ball; // Asignar la bola al nuevo Player
+        //    }
+
+        //    rb = currentPlayer.GetComponent<Rigidbody2D>(); // Actualizar referencia de Rigidbody2D
+        //    isExtended = true;
+        //    extensionTimer = extensionDuration;
+
+        //    float halfPlayerWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
+        //    minX = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + halfPlayerWidth;
+        //    maxX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - halfPlayerWidth;
+        //}
+    }
+
+    private void ResetSize()
+    {
+        //Vector2 currentPosition = transform.position;
+        //Destroy(currentPlayer); // Destruir la barra extendida
+
+        //// Instanciar el prefab original
+        //currentPlayer = Instantiate(this.gameObject, currentPosition, Quaternion.identity);
+        //currentPlayer.transform.parent = transform.parent;
+
+        //// Asignar el Rigidbody2D y otros parámetros
+        //var newPlayerScript = currentPlayer.GetComponent<Player>();
+        //if (newPlayerScript != null)
+        //{
+        //    newPlayerScript.minX = minX;
+        //    newPlayerScript.maxX = maxX;
+        //    newPlayerScript.rb = currentPlayer.GetComponent<Rigidbody2D>();
+        //    newPlayerScript.isAutoMode = isAutoMode; // Mantener el modo de movimiento
+        //}
+
+        //rb = currentPlayer.GetComponent<Rigidbody2D>();
+        //isExtended = false;
     }
 }

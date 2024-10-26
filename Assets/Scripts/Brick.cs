@@ -23,6 +23,7 @@ public class Brick : MonoBehaviour
 
             if (resistance <= 0)
             {
+                FindObjectOfType<GameManager>().BrickDestroyed();
                 FindObjectOfType<GameManager>().CheckLevelCompleted();
                 Destroy(gameObject);
                 //animator.Play("RedBrick");

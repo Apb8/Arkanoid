@@ -9,4 +9,9 @@ public class GameOverScene : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
+
+    public void GoToMMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }

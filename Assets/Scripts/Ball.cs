@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     public float speed = 300.0f;
     private Vector2 velocity;
     Vector2 startPosition;
+    public float speedIncrement = 1.001f; //0.1%
+    public float maxSpeed = 350.0f;
 
     public AudioSource audioSource;
     public AudioClip brickSound, loseSound, wallSound;
@@ -19,6 +21,21 @@ public class Ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        rb.velocity *= speedIncrement;
+
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
+
+
+        //evitar que la ball se quede atascada en un mismo mov vertical
+        if (Mathf.Abs(rb.velocity.x) < 0.5f)
+        {
+            float directionX = rb.velocity.x > 0 ? 0.5f : -0.5f;
+            rb.velocity = new Vector2(directionX, rb.velocity.y).normalized * rb.velocity.magnitude;
+        }
+
         if (collision.gameObject.CompareTag("DeadZone"))
         {
             audioSource.clip = loseSound;

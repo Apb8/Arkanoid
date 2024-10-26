@@ -6,14 +6,29 @@ public class Brick : MonoBehaviour
 {
     //public Animator animator;
     //public float destroyDelay = 0.5f;
+    public int resistance = 1;
+
+    private void Start()
+    {
+        if (gameObject.CompareTag("Resistant"))
+        {
+            resistance += 1;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Pelotilla"))
         {
-            //animator.Play("RedBrick");
-            //StartCoroutine(DestroyBrick());
-            FindObjectOfType<GameManager>().CheckLevelCompleted();
-            Destroy(gameObject);
+            resistance--; //mirar com fer be lo de resistant
+
+            if (resistance <= 0)
+            {
+                FindObjectOfType<GameManager>().CheckLevelCompleted();
+                Destroy(gameObject);
+                //animator.Play("RedBrick");
+                //StartCoroutine(DestroyBrick());
+            }
+            
         }
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7201994810015492191}
   m_Layer: 0
   m_Name: BrickRed
-  m_TagString: Untagged
+  m_TagString: Resistant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,5 +143,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150e294f97f0d494b926620bd4e3a778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  destroyDelay: 0.5

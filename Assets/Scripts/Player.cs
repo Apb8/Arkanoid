@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
     public bool isAutoMode = false;
     public GameObject ball;
 
-    [SerializeField] private GameObject extendedPlayerPrefab;
-    private GameObject currentPlayer; 
-    private bool isExtended = false;
-    public float extensionDuration = 5f;
-    private float extensionTimer;
+    //[SerializeField] private GameObject extendedPlayerPrefab;
+    //private GameObject currentPlayer; 
+    //private bool isExtended = false;
+    //public float extensionDuration = 5f;
+    //private float extensionTimer;
 
     // Start is called before the first frame update
     private void Start()
